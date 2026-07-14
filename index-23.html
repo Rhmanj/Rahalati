@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<meta name="theme-color" content="#0E7C86" />
+<title>رحلاتي · إدارة ميزانية السفر</title>
+<link rel="manifest" href="data:application/json;charset=utf-8,%7B%22name%22:%22%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%D9%8A%20%E2%80%94%20%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D9%85%D9%8A%D8%B2%D8%A7%D9%86%D9%8A%D8%A9%20%D8%A7%D9%84%D8%B3%D9%81%D8%B1%22,%22short_name%22:%22%D8%B1%D8%AD%D9%84%D8%A7%D8%AA%D9%8A%22,%22description%22:%22%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D9%84%D8%AA%D8%AE%D8%B7%D9%8A%D8%B7%20%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D8%B1%D9%8A%D9%81%20%D9%88%D9%85%D8%AA%D8%A7%D8%A8%D8%B9%D8%A9%20%D8%A7%D9%84%D9%85%D9%8A%D8%B2%D8%A7%D9%86%D9%8A%D8%A9%22,%22start_url%22:%22./index.html%22,%22scope%22:%22./%22,%22display%22:%22standalone%22,%22background_color%22:%22%23ffffff%22,%22theme_color%22:%220E7C86%22,%22orientation%22:%22portrait-primary%22,%22icons%22:%5B%7B%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20192%20192%27%3E%3Crect%20width=%27192%27%20height=%27192%27%20fill=%27%230E7C86%27/%3E%3Cpath%20d=%27M96%2040%20L130%2080%20L96%2080%20Z%20M80%20120%20Q80%20100%2096%20100%20Q112%20100%20112%20120%20L112%20140%20Q112%20150%2096%20150%20Q80%20150%2080%20140%20Z%27%20fill=%27%23ffffff%27%20opacity=%270.9%27/%3E%3C/svg%3E%22,%22sizes%22:%22192x192%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%22%7D,%7B%22src%22:%22data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%20512%20512%27%3E%3Crect%20width=%27512%27%20height=%27512%27%20fill=%27%230E7C86%27/%3E%3Cpath%20d=%27M256%20102%20L350%20240%20L256%20240%20Z%20M220%20320%20Q220%20270%20256%20270%20Q292%20270%20292%20320%20L292%20380%20Q292%20410%20256%20410%20Q220%20410%20220%20380%20Z%27%20fill=%27%23ffffff%27%20opacity=%270.9%27/%3E%3C/svg%3E%22,%22sizes%22:%22512x512%22,%22type%22:%22image/svg+xml%22,%22purpose%22:%22any%20maskable%22%7D%5D,%22categories%22:%5B%22finance%22,%22travel%22,%22productivity%22%5D%7D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="رحلاتي">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#EEF2F3;
+  --surface:#FFFFFF;
+  --surface-2:#F5F8F9;
+  --primary:#0E7C86;
+  --primary-dark:#0A5A62;
+  --primary-soft:#E0F0F1;
+  --ink:#173039;
+  --muted:#5F757F;
+  --faint:#8A9BA3;
+  --border:#E1E8EA;
+  --border-strong:#CFDADD;
+  --success:#1E9D64;
+  --success-soft:#E5F5EC;
+  --warn:#CE8A0C;
+  --warn-soft:#FBF0D8;
+  --danger:#D8464C;
+  --danger-soft:#FBE5E6;
+  --accent:#E6875A;
+  --radius:16px;
+  --radius-sm:11px;
+  --radius-lg:22px;
+  --shadow:0 1px 2px rgba(23,48,57,.04), 0 6px 20px rgba(23,48,57,.06);
+  --shadow-lg:0 10px 40px rgba(23,48,57,.14);
+  --font-head:"Cairo","Segoe UI",Tahoma,Arial,sans-serif;
+  --font-body:"Tajawal","Segoe UI",Tahoma,Arial,sans-serif;
+  --sidebar-w:250px;
+}
+
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{font-family:var(--font-body);background:var(--bg);color:var(--ink);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+h1,h2,h3,h4{font-family:var(--font-head);margin:0;line-height:1.3;font-weight:700;}
+button{font-family:var(--font-body);cursor:pointer;}
+input,select,textarea{font-family:var(--font-body);font-size:15px;}
+a{color:var(--primary);}
+::selection{background:var(--primary-soft);}
+
+.num{font-family:var(--font-head);font-feature-settings:"tnum" 1;letter-spacing:.2px;direction:ltr;unicode-bidi:isolate;display:inline-block;}
+
+.app-shell{min-height:100vh;display:flex;flex-direction:column;}
+
+.topbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,255,255,.86);backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--border);}
+.topbar .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-family:var(--font-head);}
+.topbar .brand .logo{width:34px;height:34px;border-radius:10px;background:var(--primary);color:#fff;display:grid;place-items:center;box-shadow:0 4px 12px rgba(14,124,134,.35);}
+.topbar .trip-pill{margin-inline-start:auto;}
+
+.layout{display:flex;flex:1;width:100%;max-width:1180px;margin:0 auto;}
+.sidebar{display:none;}
+.main{flex:1;min-width:0;padding:20px 16px 96px;}
+@media(min-width:960px){
+  .topbar{display:none;}
+  .layout{gap:0;}
+  .sidebar{display:flex;flex-direction:column;gap:6px;width:var(--sidebar-w);flex-shrink:0;padding:22px 16px;position:sticky;top:0;height:100vh;border-inline-start:1px solid var(--border);background:var(--surface);}
+  .main{padding:28px 26px 40px;}
+}
+
+.side-brand{display:flex;align-items:center;gap:11px;padding:6px 8px 18px;font-family:var(--font-head);font-weight:800;font-size:19px;}
+.side-brand .logo{width:40px;height:40px;border-radius:12px;background:var(--primary);color:#fff;display:grid;place-items:center;box-shadow:0 6px 16px rgba(14,124,134,.35);}
+.side-brand small{display:block;font-weight:500;font-size:11px;color:var(--muted);font-family:var(--font-body);}
+.trip-switch{margin-bottom:14px;}
+
+.nav-item{display:flex;align-items:center;gap:12px;padding:11px 13px;border-radius:12px;color:var(--muted);font-weight:600;font-size:14.5px;border:none;background:none;width:100%;text-align:start;transition:.15s;}
+.nav-item:hover{background:var(--surface-2);color:var(--ink);}
+.nav-item.active{background:var(--primary-soft);color:var(--primary-dark);}
+.nav-item svg{width:21px;height:21px;flex-shrink:0;}
+.nav-spacer{flex:1;}
+.side-foot{font-size:11.5px;color:var(--faint);padding:10px 8px;text-align:center;}
+
+.tabbar{position:fixed;bottom:0;inset-inline:0;z-index:40;display:flex;justify-content:space-around;background:rgba(255,255,255,.94);backdrop-filter:saturate(140%) blur(12px);border-top:1px solid var(--border);padding:6px 6px calc(6px + env(safe-area-inset-bottom));}
+.tab{flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;padding:6px 2px;border:none;background:none;color:var(--faint);font-size:10.5px;font-weight:600;border-radius:12px;}
+.tab svg{width:22px;height:22px;}
+.tab.active{color:var(--primary);}
+@media(min-width:960px){.tabbar{display:none;}}
+
+.view-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap;}
+.view-head h1{font-size:23px;font-weight:800;}
+.view-head p{margin:2px 0 0;color:var(--muted);font-size:13.5px;}
+
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);}
+.card-pad{padding:18px;}
+.section-title{font-size:16px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.section-title .sub{font-weight:500;font-size:12.5px;color:var(--muted);margin-inline-start:auto;}
+
+.grid{display:grid;gap:14px;}
+.stack{display:flex;flex-direction:column;gap:14px;}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;padding:11px 18px;border-radius:12px;border:1px solid transparent;font-weight:700;font-size:14.5px;background:var(--surface-2);color:var(--ink);transition:.15s;white-space:nowrap;}
+.btn svg{width:18px;height:18px;}
+.btn:hover{filter:brightness(.97);}
+.btn:active{transform:translateY(1px);}
+.btn-primary{background:var(--primary);color:#fff;box-shadow:0 4px 14px rgba(14,124,134,.28);}
+.btn-primary:hover{background:var(--primary-dark);filter:none;}
+.btn-ghost{background:transparent;border-color:var(--border-strong);color:var(--muted);}
+.btn-ghost:hover{background:var(--surface-2);color:var(--ink);}
+.btn-danger{background:var(--danger-soft);color:var(--danger);}
+.btn-sm{padding:7px 12px;font-size:13px;border-radius:10px;}
+.btn-block{width:100%;}
+.icon-btn{width:36px;height:36px;padding:0;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--muted);display:grid;place-items:center;transition:.15s;}
+.icon-btn:hover{background:var(--surface-2);color:var(--ink);}
+.icon-btn.danger:hover{background:var(--danger-soft);color:var(--danger);border-color:var(--danger-soft);}
+.icon-btn svg{width:17px;height:17px;}
+
+.field{display:flex;flex-direction:column;gap:6px;margin-bottom:14px;}
+.field label{font-size:13.5px;font-weight:600;color:var(--ink);}
+.field label .req{color:var(--danger);margin-inline-start:3px;}
+.field .hint{font-size:11.5px;color:var(--faint);font-weight:400;}
+.control{width:100%;padding:11px 13px;border-radius:11px;border:1.5px solid var(--border);background:var(--surface-2);color:var(--ink);transition:.15s;outline:none;}
+.control:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px var(--primary-soft);}
+textarea.control{resize:vertical;min-height:70px;}
+.control.invalid{border-color:var(--danger);background:var(--danger-soft);}
+.field-error{font-size:12px;color:var(--danger);font-weight:600;display:none;}
+.field.has-error .field-error{display:block;}
+.field.has-error label{color:var(--danger);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+@media(max-width:520px){.two-col{grid-template-columns:1fr;}}
+.amount-wrap{position:relative;}
+.amount-wrap .cur{position:absolute;inset-inline-start:13px;top:50%;transform:translateY(-50%);color:var(--faint);font-size:13px;pointer-events:none;font-weight:600;}
+.amount-wrap .control{padding-inline-start:44px;}
+
+.badge{display:inline-flex;align-items:center;gap:5px;padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;display:inline-block;}
+.tag{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:600;background:var(--surface-2);color:var(--muted);}
+
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+@media(min-width:720px){.stat-grid{grid-template-columns:repeat(4,1fr);}}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);}
+.stat .lbl{font-size:12.5px;color:var(--muted);font-weight:600;display:flex;align-items:center;gap:6px;}
+.stat .val{font-size:22px;font-weight:800;margin-top:6px;font-family:var(--font-head);direction:ltr;text-align:start;}
+.stat .val .unit{font-size:13px;color:var(--faint);font-weight:600;margin-inline-start:3px;}
+.stat.accent-p{border-top:3px solid var(--primary);}
+.stat.accent-g{border-top:3px solid var(--success);}
+.stat.accent-w{border-top:3px solid var(--warn);}
+.stat.accent-d{border-top:3px solid var(--danger);}
+
+.bar{height:10px;border-radius:999px;background:var(--surface-2);overflow:hidden;border:1px solid var(--border);}
+.bar>span{display:block;height:100%;border-radius:999px;transition:width .5s ease;}
+
+.alert{display:flex;gap:11px;align-items:flex-start;padding:13px 15px;border-radius:13px;font-size:13.5px;font-weight:600;margin-bottom:12px;}
+.alert svg{width:20px;height:20px;flex-shrink:0;margin-top:1px;}
+.alert-ok{background:var(--success-soft);color:#0f6b41;}
+.alert-warn{background:var(--warn-soft);color:#8a5c05;}
+.alert-danger{background:var(--danger-soft);color:#a52b30;}
+.alert-info{background:var(--primary-soft);color:var(--primary-dark);}
+
+.list{display:flex;flex-direction:column;gap:9px;}
+.line-item{display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:13px;background:var(--surface);border:1px solid var(--border);transition:.15s;}
+.line-item:hover{border-color:var(--border-strong);}
+.line-item .cat-dot{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;flex-shrink:0;font-family:var(--font-head);font-weight:800;font-size:15px;color:#fff;}
+.line-item .li-main{flex:1;min-width:0;}
+.line-item .li-title{font-weight:700;font-size:14.5px;display:flex;align-items:center;gap:7px;flex-wrap:wrap;}
+.line-item .li-meta{font-size:12px;color:var(--muted);margin-top:2px;display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+.line-item .li-amount{font-family:var(--font-head);font-weight:800;font-size:15.5px;white-space:nowrap;direction:ltr;}
+.line-item .li-actions{display:flex;gap:6px;flex-shrink:0;}
+.li-over{border-color:var(--danger)!important;background:var(--danger-soft);}
+
+.empty{text-align:center;padding:44px 20px;color:var(--muted);}
+.empty .ico{width:64px;height:64px;border-radius:20px;background:var(--surface-2);display:grid;place-items:center;margin:0 auto 14px;color:var(--faint);}
+.empty .ico svg{width:30px;height:30px;}
+.empty h3{font-size:17px;margin-bottom:6px;color:var(--ink);}
+.empty p{font-size:13.5px;max-width:340px;margin:0 auto 18px;}
+
+.ring-wrap{display:flex;align-items:center;gap:22px;flex-wrap:wrap;}
+.ring{position:relative;width:170px;height:170px;flex-shrink:0;}
+.ring svg{transform:rotate(-90deg);}
+.ring .ring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.ring .rc-pct{font-family:var(--font-head);font-weight:800;font-size:34px;line-height:1;direction:ltr;}
+.ring .rc-lbl{font-size:11.5px;color:var(--muted);font-weight:600;margin-top:3px;}
+.ring-info{flex:1;min-width:180px;display:flex;flex-direction:column;gap:10px;}
+.ring-info .ri-row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;padding:6px 0;border-bottom:1px dashed var(--border);}
+.ring-info .ri-row:last-child{border:none;}
+.ring-info .ri-row b{font-family:var(--font-head);direction:ltr;}
+
+.cbars{display:flex;flex-direction:column;gap:14px;}
+.cbar .cbar-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;align-items:center;}
+.cbar .cbar-top .amts{font-family:var(--font-head);font-size:12.5px;color:var(--muted);direction:ltr;}
+.cbar .track{position:relative;height:22px;border-radius:8px;background:var(--surface-2);overflow:hidden;}
+.cbar .track .plan{position:absolute;inset-block:0;inset-inline-start:0;background:repeating-linear-gradient(45deg,var(--border-strong),var(--border-strong) 6px,#d7e0e2 6px,#d7e0e2 12px);border-radius:8px;}
+.cbar .track .actual{position:absolute;inset-block:2px;inset-inline-start:0;border-radius:6px;transition:width .5s;}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--muted);margin-top:4px;flex-wrap:wrap;}
+.legend span{display:flex;align-items:center;gap:6px;}
+.legend .sw{width:16px;height:11px;border-radius:3px;display:inline-block;}
+
+.donut-wrap{display:flex;gap:20px;align-items:center;flex-wrap:wrap;}
+.donut-legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:8px;}
+.donut-legend .dl{display:flex;align-items:center;gap:9px;font-size:13px;}
+.donut-legend .dl .nm{flex:1;}
+.donut-legend .dl b{font-family:var(--font-head);direction:ltr;}
+
+.modal-back{position:fixed;inset:0;z-index:100;background:rgba(23,48,57,.42);backdrop-filter:blur(3px);display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:.2s;padding:0;}
+.modal-back.open{opacity:1;pointer-events:auto;}
+.modal{background:var(--surface);width:100%;max-width:520px;border-radius:22px 22px 0 0;box-shadow:var(--shadow-lg);max-height:92vh;overflow-y:auto;transform:translateY(30px);transition:.25s;}
+.modal-back.open .modal{transform:translateY(0);}
+@media(min-width:640px){
+  .modal-back{align-items:center;padding:20px;}
+  .modal{border-radius:22px;}
+}
+.modal-head{position:sticky;top:0;background:var(--surface);padding:18px 20px 12px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;z-index:2;}
+.modal-head h3{font-size:17px;font-weight:800;}
+.modal-body{padding:18px 20px;}
+.modal-foot{position:sticky;bottom:0;background:var(--surface);padding:14px 20px calc(16px + env(safe-area-inset-bottom));border-top:1px solid var(--border);display:flex;gap:10px;}
+.modal-foot .btn{flex:1;}
+
+.chips{display:flex;gap:8px;flex-wrap:wrap;}
+.chip{padding:8px 14px;border-radius:999px;border:1.5px solid var(--border);background:var(--surface-2);font-size:13px;font-weight:600;color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:.15s;}
+.chip:hover{border-color:var(--border-strong);}
+.chip.sel{border-color:var(--primary);background:var(--primary-soft);color:var(--primary-dark);}
+.chip .dot{width:10px;height:10px;}
+
+.toolbar{display:grid;grid-template-columns:1fr auto;gap:10px;margin-bottom:14px;}
+.search{position:relative;}
+.search svg{position:absolute;inset-inline-start:12px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--faint);}
+.search .control{padding-inline-start:40px;}
+.filter-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;}
+.filter-row .control{padding:9px 12px;font-size:13.5px;}
+
+.toast-root{position:fixed;bottom:80px;inset-inline:0;z-index:200;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;}
+@media(min-width:960px){.toast-root{bottom:24px;}}
+.toast{background:var(--ink);color:#fff;padding:11px 18px;border-radius:13px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:9px;max-width:90%;animation:toastIn .3s ease;}
+.toast svg{width:18px;height:18px;}
+.toast.ok{background:var(--success);}
+.toast.err{background:var(--danger);}
+@keyframes toastIn{from{transform:translateY(14px);opacity:0;}to{transform:translateY(0);opacity:1;}}
+
+.trip-card{padding:16px;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow);transition:.15s;cursor:pointer;}
+.trip-card:hover{border-color:var(--primary);box-shadow:0 6px 22px rgba(14,124,134,.12);}
+.trip-card.active-trip{border-color:var(--primary);background:linear-gradient(180deg,var(--primary-soft),var(--surface));}
+.trip-card .tc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;}
+.trip-card h3{font-size:16.5px;}
+.trip-card .tc-meta{font-size:12.5px;color:var(--muted);margin-top:3px;display:flex;gap:10px;flex-wrap:wrap;}
+.trip-card .tc-budget{margin-top:12px;font-family:var(--font-head);font-weight:800;font-size:18px;direction:ltr;text-align:start;}
+.trip-card .tc-budget small{font-size:11.5px;color:var(--muted);font-weight:600;}
+
+.receipt-thumb{width:52px;height:52px;border-radius:10px;object-fit:cover;border:1px solid var(--border);cursor:pointer;}
+.img-view{position:fixed;inset:0;z-index:150;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;padding:20px;}
+.img-view.open{display:flex;}
+.img-view img{max-width:100%;max-height:100%;border-radius:12px;}
+
+.gate{max-width:440px;margin:40px auto;text-align:center;}
+
+.hidden{display:none!important;}
+.mt-2{margin-top:8px;} .mt-4{margin-top:16px;} .mb-2{margin-bottom:8px;}
+.text-muted{color:var(--muted);} .text-sm{font-size:13px;}
+.divider{height:1px;background:var(--border);margin:16px 0;}
+.spacer{flex:1;}
+</style>
+</head>
+<body>
+
+<div class="app-shell">
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>
+      </span>
+      رحلاتي
+    </div>
+    <div class="trip-pill" id="topTripSwitch"></div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-brand">
+        <span class="logo">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/></svg>
+        </span>
+        <div>رحلاتي<small>ميزانية ومصاريف السفر</small></div>
+      </div>
+      <div class="trip-switch" id="sideTripSwitch"></div>
+      <nav id="sideNav"></nav>
+      <div class="nav-spacer"></div>
+      <div class="side-foot">تُحفظ بياناتك محلياً على جهازك فقط</div>
+    </aside>
+
+    <main class="main" id="view"></main>
+  </div>
+
+  <nav class="tabbar" id="tabbar"></nav>
+</div>
+
+<div id="modalRoot"></div>
+<div class="toast-root" id="toastRoot"></div>
+<div class="img-view" id="imgView" onclick="this.classList.remove('open')"><img id="imgViewImg" alt="صورة الفاتورة" /></div>
+
+<script>
+// ✅ كود التطبيق كامل مضمّن هنا
+// الملفات الخارجية غير مطلوبة!
+
+const $ = (sel, el = document) => el.querySelector(sel);
+const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+
+function money(n) { const v = Number(n) || 0; return v.toLocaleString('en-US', { maximumFractionDigits: 2 }); }
+function sar(n) { return money(n) + ' ر.س'; }
+function fmtDate(iso) { if (!iso) return ''; try { const d = new Date(iso); return d.toLocaleDateString('ar-SA-u-nu-latn', { year: 'numeric', month: 'short', day: 'numeric' }); } catch (e) { return iso; } }
+function esc(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;'); }
+
+function parseAmount(v) { if (v === '' || v == null) return null; const n = Number(String(v).replace(/,/g, '').trim()); if (!isFinite(n)) return null; return n; }
+function isValidAmount(v) { const n = parseAmount(v); return n !== null && n > 0; }
+
+function toast(msg, type = '') {
+  const root = $('#toastRoot');
+  const el = document.createElement('div');
+  el.className = 'toast ' + type;
+  const ic = type === 'ok' ? ICON.check : type === 'err' ? ICON.alert : ICON.info;
+  el.innerHTML = ic + '<span>' + esc(msg) + '</span>';
+  root.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; el.style.transition = '.3s'; }, 2400);
+  setTimeout(() => el.remove(), 2800);
+}
+
+const STORE_KEY = 'rahalati_v1';
+const DEFAULT_CATEGORIES = [
+  { id: 'c_stay', name: 'سكن', color: '#0E7C86' },
+  { id: 'c_transport', name: 'مواصلات', color: '#3B7DD8' },
+  { id: 'c_food', name: 'أكل', color: '#E6875A' },
+  { id: 'c_tickets', name: 'تذاكر', color: '#8B6BD9' },
+  { id: 'c_shopping', name: 'مشتريات', color: '#C7568C' },
+  { id: 'c_fun', name: 'ترفيه', color: '#1E9D64' },
+  { id: 'c_fees', name: 'رسوم', color: '#B0893A' },
+  { id: 'c_emergency', name: 'طوارئ', color: '#D8464C' },
+  { id: 'c_other', name: 'أخرى', color: '#6B7A80' },
+];
+
+function defaultStore() { return { trips: [], categories: JSON.parse(JSON.stringify(DEFAULT_CATEGORIES)), activeTripId: null }; }
+
+let store = loadStore();
+function loadStore() {
+  try {
+    const raw = localStorage.getItem(STORE_KEY);
+    if (!raw) return defaultStore();
+    const data = JSON.parse(raw);
+    if (!data.categories || !data.categories.length) data.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+    if (!Array.isArray(data.trips)) data.trips = [];
+    return data;
+  } catch (e) {
+    console.warn('تعذّر قراءة البيانات', e);
+    return defaultStore();
+  }
+}
+function save() {
+  try {
+    localStorage.setItem(STORE_KEY, JSON.stringify(store));
+  } catch (e) {
+    toast('تعذّر الحفظ — قد تكون المساحة ممتلئة', 'err');
+  }
+}
+
+function activeTrip() { return store.trips.find(t => t.id === store.activeTripId) || null; }
+function catById(id) { return store.categories.find(c => c.id === id); }
+function catName(id) { const c = catById(id); return c ? c.name : 'غير مصنّف'; }
+function catColor(id) { const c = catById(id); return c ? c.color : '#6B7A80'; }
+
+function calc(trip) {
+  const budget = Number(trip.budget) || 0;
+  const planTotal = (trip.plan || []).reduce((s, p) => s + (Number(p.amount) || 0), 0);
+  const actualTotal = (trip.expenses || []).reduce((s, e) => s + (Number(e.amount) || 0), 0);
+  const remaining = budget - actualTotal;
+  const overspend = remaining < 0 ? Math.abs(remaining) : 0;
+  const pct = budget > 0 ? (actualTotal / budget) * 100 : 0;
+  const planVsBudget = budget - planTotal;
+
+  const byCat = {};
+  store.categories.forEach(c => { byCat[c.id] = { id: c.id, name: c.name, color: c.color, plan: 0, actual: 0 }; });
+  (trip.plan || []).forEach(p => { if (!byCat[p.categoryId]) byCat[p.categoryId] = { id: p.categoryId, name: catName(p.categoryId), color: catColor(p.categoryId), plan: 0, actual: 0 }; byCat[p.categoryId].plan += Number(p.amount) || 0; });
+  (trip.expenses || []).forEach(e => { if (!byCat[e.categoryId]) byCat[e.categoryId] = { id: e.categoryId, name: catName(e.categoryId), color: catColor(e.categoryId), plan: 0, actual: 0 }; byCat[e.categoryId].actual += Number(e.amount) || 0; });
+  const cats = Object.values(byCat).filter(c => c.plan > 0 || c.actual > 0);
+
+  let topCat = null;
+  cats.forEach(c => { if (!topCat || c.actual > topCat.actual) topCat = c; });
+  if (topCat && topCat.actual === 0) topCat = null;
+
+  return { budget, planTotal, actualTotal, remaining, overspend, pct, planVsBudget, cats, topCat };
+}
+
+const svg = (p) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + p + '</svg>';
+const ICON = {
+  dashboard: svg('<rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>'),
+  plan: svg('<path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="M9 12h6M9 16h4"/>'),
+  wallet: svg('<path d="M19 7V5a2 2 0 0 0-2-2H5a2 2 0 0 0 0 4h14a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5"/><circle cx="16" cy="12" r="1.4"/>'),
+  report: svg('<path d="M14 3v4a1 1 0 0 0 1 1h4"/><path d="M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z"/><path d="M9 12h6M9 16h6M9 8h1"/>'),
+  more: svg('<circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>'),
+  tag: svg('<path d="M12.6 2.6a2 2 0 0 0-1.4-.6H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.2 8.2a2 2 0 0 0 2.8 0l7.2-7.2a2 2 0 0 0 0-2.8Z"/><circle cx="7.5" cy="7.5" r="1.2"/>'),
+  plus: svg('<path d="M12 5v14M5 12h14"/>'),
+  edit: svg('<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>'),
+  trash: svg('<path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M10 11v6M14 11v6"/>'),
+  check: svg('<path d="M20 6 9 17l-5-5"/>'),
+  alert: svg('<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z"/><path d="M12 9v4M12 17h.01"/>'),
+  info: svg('<circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/>'),
+  search: svg('<circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>'),
+  x: svg('<path d="M18 6 6 18M6 6l12 12"/>'),
+  wand: svg('<path d="M15 4V2M15 10V8M9 4h2M19 4h2M5 22 20 7"/><path d="M11.5 12.5 8 9"/>'),
+  camera: svg('<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/>'),
+  download: svg('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5M12 15V3"/>'),
+  copy: svg('<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>'),
+  cal: svg('<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'),
+  users: svg('<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.9"/>'),
+  chart: svg('<path d="M3 3v18h18"/><rect x="7" y="10" width="3" height="7"/><rect x="12" y="6" width="3" height="11"/><rect x="17" y="13" width="3" height="4"/>'),
+  back: svg('<path d="m9 18 6-6-6-6"/>'),
+  save: svg('<path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z"/><path d="M17 21v-8H7v8M7 3v5h8"/>'),
+  print: svg('<path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>'),
+};
+
+let currentView = 'dashboard';
+const NAV = [
+  { id: 'trips', label: 'الرحلات', icon: ICON.wand },
+  { id: 'dashboard', label: 'اللوحة', icon: ICON.dashboard },
+  { id: 'plan', label: 'الخطة', icon: ICON.plan },
+  { id: 'expenses', label: 'المصروفات', icon: ICON.wallet },
+  { id: 'report', label: 'التقرير', icon: ICON.report },
+];
+const NAV_MORE = [
+  { id: 'categories', label: 'التصنيفات', icon: ICON.tag },
+  { id: 'settings', label: 'الإعدادات', icon: ICON.more },
+];
+
+function renderNav() {
+  const side = $('#sideNav');
+  side.innerHTML = NAV.concat(NAV_MORE).map(n => `<button class="nav-item ${currentView === n.id ? 'active' : ''}" onclick="go('${n.id}')">${n.icon}<span>${n.label}</span></button>`).join('');
+
+  const tab = $('#tabbar');
+  const mobileItems = NAV.slice(1);
+  const items = [{ id: 'trips', label: 'الرحلات', icon: ICON.wand }].concat(mobileItems.slice(0, 3)).concat([{ id: 'more', label: 'المزيد', icon: ICON.more }]);
+  tab.innerHTML = items.map(n => `<button class="tab ${currentView === n.id || (n.id === 'more' && (currentView === 'report' || currentView === 'categories' || currentView === 'settings')) ? 'active' : ''}" onclick="${n.id === 'more' ? 'openMoreMenu()' : `go('${n.id}')`}">${n.icon}<span>${n.label}</span></button>`).join('');
+}
+
+function openMoreMenu() {
+  const items = [{ id: 'report', label: 'التقرير النهائي', icon: ICON.report }].concat(NAV_MORE);
+  const body = items.map(n => `<button class="nav-item" style="font-size:15px;padding:14px" onclick="closeModal();go('${n.id}')">${n.icon}<span>${n.label}</span></button>`).join('');
+  openModal('المزيد', body, '', false);
+}
+
+function renderTripSwitch() {
+  const trips = store.trips;
+  const t = activeTrip();
+  const html = trips.length === 0
+    ? `<button class="btn btn-primary btn-sm" onclick="go('trips')">${ICON.plus}<span>أنشئ رحلة</span></button>`
+    : `<button class="btn btn-ghost btn-sm" onclick="go('trips')" style="max-width:180px"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t ? esc(t.name || 'رحلة بدون اسم') : 'اختر رحلة'}</span>${ICON.back}</button>`;
+  $('#topTripSwitch').innerHTML = html;
+  $('#sideTripSwitch').innerHTML = trips.length === 0 ? '' : `<button class="btn btn-ghost btn-block btn-sm" onclick="go('trips')" style="justify-content:space-between"><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700">${t ? esc(t.name || 'رحلة بدون اسم') : 'اختر رحلة'}</span>${ICON.back}</button>`;
+}
+
+function go(view) { currentView = view; closeModal(); window.scrollTo(0, 0); render(); }
+
+function render() {
+  renderNav();
+  renderTripSwitch();
+  const el = $('#view');
+  const needsTrip = ['dashboard', 'plan', 'expenses', 'report'];
+  if (needsTrip.includes(currentView) && !activeTrip()) {
+    el.innerHTML = `<div class="gate"><div class="empty"><div class="ico">${ICON.wand}</div><h3>لا توجد رحلة نشطة</h3><p>أنشئ رحلة جديدة وحدّد ميزانيتها لتبدأ بتخطيط المصاريف ومتابعتها.</p><button class="btn btn-primary" onclick="openTripForm()">${ICON.plus}<span>إنشاء رحلة جديدة</span></button></div></div>`;
+    return;
+  }
+  switch (currentView) {
+    case 'trips': el.innerHTML = viewTrips(); break;
+    case 'dashboard': el.innerHTML = viewDashboard(); break;
+    case 'plan': el.innerHTML = viewPlan(); break;
+    case 'expenses': el.innerHTML = viewExpenses(); bindExpenseFilters(); break;
+    case 'report': el.innerHTML = viewReport(); break;
+    case 'categories': el.innerHTML = viewCategories(); break;
+    case 'settings': el.innerHTML = viewSettings(); break;
+    default: el.innerHTML = viewDashboard();
+  }
+}
+
+// ===== الشاشات =====
+function viewTrips() {
+  const trips = store.trips;
+  let cards = '';
+  if (trips.length === 0) {
+    cards = `<div class="empty"><div class="ico">${ICON.wand}</div><h3>ابدأ رحلتك الأولى</h3><p>أنشئ رحلة، وحدّد ميزانيتها، ثم خطّط المصاريف وتابع صرفك أولاً بأول.</p><button class="btn btn-primary" onclick="openTripForm()">${ICON.plus}<span>إنشاء رحلة</span></button></div>`;
+  } else {
+    cards = `<div class="grid" style="grid-template-columns:1fr">` + trips.map(t => {
+      const c = calc(t);
+      const isActive = t.id === store.activeTripId;
+      const barColor = c.pct >= 100 ? 'var(--danger)' : c.pct >= 80 ? 'var(--warn)' : 'var(--success)';
+      return `<div class="trip-card ${isActive ? 'active-trip' : ''}" onclick="selectTrip('${t.id}')"><div class="tc-head"><div style="min-width:0"><h3>${esc(t.name || 'رحلة بدون اسم')} ${isActive ? '<span class="badge" style="background:var(--primary-soft);color:var(--primary-dark)">النشطة</span>' : ''}</h3><div class="tc-meta">${t.date ? `<span>${ICON.cal} ${esc(fmtDate(t.date))}</span>` : ''}${t.people ? `<span>${ICON.users} ${esc(t.people)} أشخاص</span>` : ''}<span>${(t.expenses || []).length} مصروف</span></div></div><div class="li-actions" onclick="event.stopPropagation()"><button class="icon-btn" title="نسخ الرحلة" onclick="duplicateTrip('${t.id}')">${ICON.copy}</button><button class="icon-btn" title="تعديل" onclick="openTripForm('${t.id}')">${ICON.edit}</button><button class="icon-btn danger" title="حذف" onclick="deleteTrip('${t.id}')">${ICON.trash}</button></div></div><div class="tc-budget"><span class="num">${sar(c.budget)}</span><br><small>الميزانية المعتمدة</small></div><div style="margin-top:10px"><div class="bar"><span style="width:${Math.min(c.pct, 100)}%;background:${barColor}"></span></div><div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:5px"><span>صُرف <b class="num">${sar(c.actualTotal)}</b></span><span class="num">${c.pct.toFixed(0)}%</span></div></div></div>`;
+    }).join('') + `</div>`;
+  }
+  return `<div class="view-head"><div><h1>الرحلات</h1><p>كل رحلة لها ميزانيتها ومصاريفها وتقاريرها الخاصة</p></div>${trips.length ? `<button class="btn btn-primary" onclick="openTripForm()">${ICON.plus}<span>رحلة جديدة</span></button>` : ''}</div>${cards}`;
+}
+
+function viewDashboard() {
+  const t = activeTrip();
+  const c = calc(t);
+  const ringColor = c.pct >= 100 ? 'var(--danger)' : c.pct >= 80 ? 'var(--warn)' : c.pct >= 50 ? 'var(--warn)' : 'var(--success)';
+
+  let alerts = '';
+  if (c.budget > 0) {
+    if (c.pct >= 100) {
+      alerts += `<div class="alert alert-danger">${ICON.alert}<div>تجاوزت الميزانية! المبلغ الزائد <b class="num">${sar(c.overspend)}</b>. راجع مصروفاتك أو عدّل الميزانية.</div></div>`;
+    } else if (c.pct >= 80) {
+      alerts += `<div class="alert alert-warn">${ICON.alert}<div>تحذير: صرفت <b class="num">${c.pct.toFixed(0)}%</b> من الميزانية. المتبقي <b class="num">${sar(c.remaining)}</b> فقط.</div></div>`;
+    } else if (c.pct >= 50) {
+      alerts += `<div class="alert alert-warn" style="background:var(--warn-soft)">${ICON.info}<div>وصلت إلى <b class="num">${c.pct.toFixed(0)}%</b> من الميزانية. تابع صرفك بعناية.</div></div>`;
+    } else if (c.actualTotal > 0) {
+      alerts += `<div class="alert alert-ok">${ICON.check}<div>وضعك ممتاز، صرفت <b class="num">${c.pct.toFixed(0)}%</b> فقط من الميزانية.</div></div>`;
+    }
+  }
+  if (c.planTotal > 0) {
+    if (c.planVsBudget < 0) {
+      alerts += `<div class="alert alert-warn">${ICON.alert}<div>خطة المصاريف أعلى من الميزانية بـ <b class="num">${sar(Math.abs(c.planVsBudget))}</b>.</div></div>`;
+    }
+  }
+
+  const ring = donutRing(Math.min(c.pct, 100), ringColor, `<div class="rc-pct" style="color:${ringColor}">${c.pct.toFixed(0)}%</div><div class="rc-lbl">من الميزانية</div>`);
+  const overCats = c.cats.filter(x => x.plan > 0 && x.actual > x.plan);
+
+  return `<div class="view-head"><div><h1>لوحة المتابعة</h1><p>${esc(t.name || 'رحلة بدون اسم')}</p></div><button class="btn btn-primary btn-sm" onclick="openExpenseForm()">${ICON.plus}<span>مصروف سريع</span></button></div>${alerts}<div class="card card-pad" style="margin-bottom:14px"><div class="ring-wrap"><div class="ring">${ring}</div><div class="ring-info"><div class="ri-row"><span>الميزانية المعتمدة</span><b class="num" style="color:var(--primary)">${sar(c.budget)}</b></div><div class="ri-row"><span>المصروفات الفعلية</span><b class="num">${sar(c.actualTotal)}</b></div><div class="ri-row"><span>${c.remaining >= 0 ? 'المبلغ المتبقي' : 'المبلغ الزائد'}</span><b class="num" style="color:${c.remaining >= 0 ? 'var(--success)' : 'var(--danger)'}">${sar(Math.abs(c.remaining))}</b></div>${c.topCat ? `<div class="ri-row"><span>أكثر تصنيف صرفاً</span><b><span class="tag"><span class="dot" style="background:${c.topCat.color}"></span>${esc(c.topCat.name)}</span></b></div>` : ''}</div></div></div><div class="stat-grid" style="margin-bottom:16px"><div class="stat accent-p"><div class="lbl">الميزانية</div><div class="val num">${money(c.budget)}<span class="unit">ر.س</span></div></div><div class="stat accent-w"><div class="lbl">الخطة المتوقعة</div><div class="val num">${money(c.planTotal)}<span class="unit">ر.س</span></div></div><div class="stat accent-g"><div class="lbl">الفعلي المصروف</div><div class="val num">${money(c.actualTotal)}<span class="unit">ر.س</span></div></div><div class="stat ${c.remaining >= 0 ? 'accent-g' : 'accent-d'}"><div class="lbl">${c.remaining >= 0 ? 'المتبقي' : 'الزائد'}</div><div class="val num" style="color:${c.remaining >= 0 ? 'var(--success)' : 'var(--danger)'}">${money(Math.abs(c.remaining))}<span class="unit">ر.س</span></div></div></div>${c.cats.length ? `<div class="card card-pad" style="margin-bottom:14px"><div class="section-title">${ICON.chart} مقارنة المتوقع بالفعلي حسب التصنيف</div>${planVsActualBars(c.cats)}<div class="legend"><span><span class="sw" style="background:repeating-linear-gradient(45deg,var(--border-strong),var(--border-strong) 4px,#d7e0e2 4px,#d7e0e2 8px)"></span> المتوقع (الخطة)</span><span><span class="sw" style="background:var(--primary)"></span> الفعلي المصروف</span></div>${overCats.length ? `<div class="alert alert-warn" style="margin-top:14px;margin-bottom:0">${ICON.alert}<div>تجاوزَت هذه التصنيفات خطتها: ${overCats.map(x => esc(x.name)).join('، ')}</div></div>` : ''}</div><div class="card card-pad"><div class="section-title">توزيع المصروفات الفعلية</div>${donutChart(c.cats.filter(x => x.actual > 0), c.actualTotal)}</div>` : `<div class="card"><div class="empty"><div class="ico">${ICON.chart}</div><h3>لا توجد بيانات بعد</h3><p>ابدأ بإضافة بنود الخطة أو المصروفات الفعلية لتظهر لك المقارنات والرسوم.</p><button class="btn btn-primary" onclick="go('expenses')">${ICON.plus}<span>إضافة مصروف</span></button></div></div>`}`;
+}
+
+function viewPlan() {
+  const t = activeTrip();
+  const c = calc(t);
+  const items = t.plan || [];
+
+  const list = items.length === 0
+    ? `<div class="empty"><div class="ico">${ICON.plan}</div><h3>لم تُضِف بنوداً بعد</h3><p>أضف بنود الخطة المتوقعة (السكن، النقل، الأكل…) وحدّد المبلغ لكل بند.</p><button class="btn btn-primary" onclick="openPlanForm()">${ICON.plus}<span>إضافة بند</span></button></div>`
+    : `<div class="list">` + items.map(p => {
+      const col = catColor(p.categoryId);
+      return `<div class="line-item"><div class="cat-dot" style="background:${col}">${esc((catName(p.categoryId) || '؟').slice(0, 1))}</div><div class="li-main"><div class="li-title">${esc(p.name || 'بند بدون اسم')}</div><div class="li-meta"><span class="tag"><span class="dot" style="background:${col}"></span>${esc(catName(p.categoryId))}</span>${p.notes ? `<span>${esc(p.notes)}</span>` : ''}</div></div><div class="li-amount num">${sar(p.amount)}</div><div class="li-actions"><button class="icon-btn" onclick="openPlanForm('${p.id}')">${ICON.edit}</button><button class="icon-btn danger" onclick="deletePlan('${p.id}')">${ICON.trash}</button></div></div>`;
+    }).join('') + `</div>`;
+
+  let summary = '';
+  if (c.budget > 0 || items.length) {
+    const within = c.planVsBudget >= 0;
+    summary = `<div class="card card-pad" style="margin-top:16px"><div class="row" style="justify-content:space-between"><div><div class="text-muted text-sm">إجمالي المصاريف المتوقعة</div><div class="num" style="font-size:22px;font-weight:800">${sar(c.planTotal)}</div></div><div style="text-align:end"><div class="text-muted text-sm">الميزانية المعتمدة</div><div class="num" style="font-size:22px;font-weight:800;color:var(--primary)">${sar(c.budget)}</div></div></div><div class="divider"></div>${items.length ? (within ? `<div class="alert alert-ok" style="margin:0">${ICON.check}<div>الخطة ضمن الميزانية 👌 يتبقى لديك <b class="num">${sar(c.planVsBudget)}</b> كهامش.</div></div>` : `<div class="alert alert-danger" style="margin:0">${ICON.alert}<div>الخطة تتجاوز الميزانية بـ <b class="num">${sar(Math.abs(c.planVsBudget))}</b>. قلّل بعض البنود أو ارفع الميزانية.</div></div>`) : `<div class="text-muted text-sm">أضف بنوداً لمقارنة الخطة بالميزانية.</div>`}</div>`;
+  }
+
+  return `<div class="view-head"><div><h1>خطة المصاريف المتوقعة</h1><p>خطّط قبل الرحلة كم تتوقع أن تصرف على كل بند</p></div>${items.length ? `<button class="btn btn-primary" onclick="openPlanForm()">${ICON.plus}<span>إضافة بند</span></button>` : ''}</div>${list}${summary}`;
+}
+
+let expFilter = { q: '', cat: '', payer: '', from: '', to: '' };
+
+function viewExpenses() {
+  const t = activeTrip();
+  const c = calc(t);
+  const all = (t.expenses || []).slice().sort((a, b) => (b.date || b.createdAt || '').localeCompare(a.date || a.createdAt || ''));
+
+  const payers = [...new Set(all.map(e => e.payer).filter(Boolean))];
+
+  const filtered = all.filter(e => {
+    if (expFilter.cat && e.categoryId !== expFilter.cat) return false;
+    if (expFilter.payer && e.payer !== expFilter.payer) return false;
+    if (expFilter.from && (e.date || '') < expFilter.from) return false;
+    if (expFilter.to && (e.date || '') > expFilter.to) return false;
+    if (expFilter.q) {
+      const q = expFilter.q.trim();
+      const hay = ((e.name || '') + ' ' + catName(e.categoryId) + ' ' + (e.notes || '') + ' ' + (e.payer || '')).toLowerCase();
+      if (!hay.includes(q.toLowerCase())) return false;
+    }
+    return true;
+  });
+
+  const planByCat = {};
+  (t.plan || []).forEach(p => { planByCat[p.categoryId] = (planByCat[p.categoryId] || 0) + (Number(p.amount) || 0); });
+  const actualByCat = {};
+  (t.expenses || []).forEach(e => { actualByCat[e.categoryId] = (actualByCat[e.categoryId] || 0) + (Number(e.amount) || 0); });
+
+  const filteredTotal = filtered.reduce((s, e) => s + (Number(e.amount) || 0), 0);
+
+  const catOptions = store.categories.map(cat => `<option value="${cat.id}" ${expFilter.cat === cat.id ? 'selected' : ''}>${esc(cat.name)}</option>`).join('');
+  const payerOptions = payers.map(p => `<option value="${esc(p)}" ${expFilter.payer === p ? 'selected' : ''}>${esc(p)}</option>`).join('');
+
+  const list = all.length === 0
+    ? `<div class="empty"><div class="ico">${ICON.wallet}</div><h3>لا مصروفات بعد</h3><p>سجّل مصروفاتك الفعلية أثناء الرحلة، ودع البرنامج يحدّث الميزانية لك مباشرة.</p><button class="btn btn-primary" onclick="openExpenseForm()">${ICON.plus}<span>إضافة مصروف</span></button></div>`
+    : (filtered.length === 0
+      ? `<div class="empty"><div class="ico">${ICON.search}</div><h3>لا نتائج مطابقة</h3><p>جرّب تعديل البحث أو الفلاتر.</p></div>`
+      : `<div class="list">` + filtered.map(e => {
+        const col = catColor(e.categoryId);
+        const over = planByCat[e.categoryId] != null && actualByCat[e.categoryId] > planByCat[e.categoryId];
+        return `<div class="line-item ${over ? 'li-over' : ''}"><div class="cat-dot" style="background:${col}">${esc((catName(e.categoryId) || '؟').slice(0, 1))}</div><div class="li-main"><div class="li-title">${esc(e.name || 'مصروف بدون اسم')}${over ? `<span class="badge alert-danger" style="background:var(--danger-soft);color:var(--danger)">${ICON.alert} تجاوز البند</span>` : ''}</div><div class="li-meta"><span class="tag"><span class="dot" style="background:${col}"></span>${esc(catName(e.categoryId))}</span>${e.date ? `<span>${esc(fmtDate(e.date))}</span>` : ''}${e.method ? `<span>${esc(e.method)}</span>` : ''}${e.payer ? `<span>دفعها: ${esc(e.payer)}</span>` : ''}${e.notes ? `<span>${esc(e.notes)}</span>` : ''}</div></div>${e.receipt ? `<img src="${e.receipt}" class="receipt-thumb" onclick="viewImage('${e.id}')" alt="فاتورة" />` : ''}<div class="li-amount num">${sar(e.amount)}</div><div class="li-actions"><button class="icon-btn" onclick="openExpenseForm('${e.id}')">${ICON.edit}</button><button class="icon-btn danger" onclick="deleteExpense('${e.id}')">${ICON.trash}</button></div></div>`;
+      }).join('') + `</div>`);
+
+  return `<div class="view-head"><div><h1>المصروفات الفعلية</h1><p>سجّل كل مصروف فعلي، وتابع الميزانية لحظة بلحظة</p></div>${all.length ? `<button class="btn btn-primary" onclick="openExpenseForm()">${ICON.plus}<span>إضافة مصروف</span></button>` : ''}</div>${all.length ? `<div class="toolbar"><div class="search">${ICON.search}<input class="control" id="expSearch" placeholder="ابحث في المصروفات…" value="${esc(expFilter.q)}"></div><button class="btn btn-ghost btn-sm" onclick="clearFilters()">مسح</button></div><div class="filter-row"><select class="control" id="expCat" style="max-width:170px"><option value="">كل التصنيفات</option>${catOptions}</select>${payers.length ? `<select class="control" id="expPayer" style="max-width:170px"><option value="">كل من دفع</option>${payerOptions}</select>` : ''}<input type="date" class="control" id="expFrom" value="${esc(expFilter.from)}" style="max-width:150px" title="من تاريخ"><input type="date" class="control" id="expTo" value="${esc(expFilter.to)}" style="max-width:150px" title="إلى تاريخ"></div><div class="row" style="justify-content:space-between;margin-bottom:12px"><span class="text-muted text-sm">${filtered.length} من ${all.length} مصروف</span><span class="text-sm">الإجمالي المعروض: <b class="num" style="color:var(--primary)">${sar(filteredTotal)}</b></span></div>` : ''}${list}`;
+}
+
+function bindExpenseFilters() {
+  const s = $('#expSearch'); if (s) s.oninput = (e) => { expFilter.q = e.target.value; debouncedExpRender(); };
+  const cat = $('#expCat'); if (cat) cat.onchange = (e) => { expFilter.cat = e.target.value; render(); };
+  const pay = $('#expPayer'); if (pay) pay.onchange = (e) => { expFilter.payer = e.target.value; render(); };
+  const f = $('#expFrom'); if (f) f.onchange = (e) => { expFilter.from = e.target.value; render(); };
+  const tt = $('#expTo'); if (tt) tt.onchange = (e) => { expFilter.to = e.target.value; render(); };
+}
+let _debTimer = null;
+function debouncedExpRender() {
+  clearTimeout(_debTimer);
+  _debTimer = setTimeout(() => {
+    const active = document.activeElement;
+    const val = active && active.id === 'expSearch' ? active.selectionStart : null;
+    render();
+    if (val !== null) { const s = $('#expSearch'); if (s) { s.focus(); s.setSelectionRange(val, val); } }
+  }, 200);
+}
+function clearFilters() { expFilter = { q: '', cat: '', payer: '', from: '', to: '' }; render(); }
+
+function viewCategories() {
+  const cats = store.categories;
+  function usage(id) {
+    let n = 0;
+    store.trips.forEach(t => {
+      (t.plan || []).forEach(p => { if (p.categoryId === id) n++; });
+      (t.expenses || []).forEach(e => { if (e.categoryId === id) n++; });
+    });
+    return n;
+  }
+  const list = cats.map(c => `<div class="line-item"><div class="cat-dot" style="background:${c.color}">${esc(c.name.slice(0, 1))}</div><div class="li-main"><div class="li-title">${esc(c.name)}</div><div class="li-meta"><span>مستخدم في ${usage(c.id)} بند/مصروف</span></div></div><div class="li-actions"><button class="icon-btn" onclick="openCatForm('${c.id}')">${ICON.edit}</button><button class="icon-btn danger" onclick="deleteCat('${c.id}')">${ICON.trash}</button></div></div>`).join('');
+
+  return `<div class="view-head"><div><h1>التصنيفات</h1><p>أضف أو عدّل التصنيفات التي تستخدمها في الخطة والمصروفات</p></div><button class="btn btn-primary" onclick="openCatForm()">${ICON.plus}<span>تصنيف جديد</span></button></div><div class="list">${list}</div>`;
+}
+
+function viewSettings() {
+  const count = store.trips.length;
+  const expCount = store.trips.reduce((s, t) => s + (t.expenses || []).length, 0);
+  return `<div class="view-head"><div><h1>الإعدادات</h1><p>النسخ الاحتياطي وإدارة البيانات</p></div></div>
+
+    <div class="card card-pad" style="margin-bottom:14px">
+      <div class="section-title">${ICON.info} بياناتك</div>
+      <div class="stat-grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="stat"><div class="lbl">عدد الرحلات</div><div class="val num">${count}</div></div>
+        <div class="stat"><div class="lbl">إجمالي المصروفات</div><div class="val num">${expCount}</div></div>
+      </div>
+      <p class="text-muted text-sm mt-4">تُحفظ كل البيانات محلياً على هذا الجهاز والمتصفح فقط، ولا تُرسل لأي خادم. لن تختفي عند إغلاق المتصفح، لكنها قد تُحذف إذا مسحت بيانات المتصفح — لذا خذ نسخة احتياطية.</p>
+    </div>
+
+    <div class="card card-pad" style="margin-bottom:14px">
+      <div class="section-title">${ICON.download} النسخ الاحتياطي</div>
+      <p class="text-muted text-sm mb-2">صدّر كل رحلاتك في ملف واحد يمكنك حفظه أو نقله لجهاز آخر ثم استيراده.</p>
+      <div class="row">
+        <button class="btn btn-ghost" onclick="exportBackup()">${ICON.download}<span>تصدير نسخة احتياطية</span></button>
+        <button class="btn btn-ghost" onclick="document.getElementById('importFile').click()">${ICON.save}<span>استيراج نسخة</span></button>
+        <input type="file" id="importFile" accept="application/json" class="hidden" onchange="importBackup(this)">
+      </div>
+    </div>
+
+    <div class="card card-pad">
+      <div class="section-title" style="color:var(--danger)">${ICON.trash} منطقة الخطر</div>
+      <p class="text-muted text-sm mb-2">حذف كل الرحلات والبيانات نهائياً من هذا الجهاز. لا يمكن التراجع.</p>
+      <button class="btn btn-danger" onclick="wipeAll()">${ICON.trash}<span>حذف كل البيانات</span></button>
+    </div>`;
+}
+
+function viewReport() {
+  const t = activeTrip();
+  const c = calc(t);
+  const exps = (t.expenses || []).slice().sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+
+  const rows = exps.map((e, i) => `<tr><td class="num">${i + 1}</td><td>${esc(e.date ? fmtDate(e.date) : '—')}</td><td>${esc(e.name || 'مصروف بدون اسم')}</td><td>${esc(catName(e.categoryId))}</td><td>${esc(e.method || '—')}</td><td>${esc(e.payer || '—')}</td><td class="num" style="font-weight:700">${money(e.amount)} ر.س</td></tr>`).join('');
+
+  const catRows = c.cats.map(x => {
+    const diff = x.actual - x.plan;
+    const col = diff > 0 ? 'var(--danger)' : diff < 0 ? 'var(--success)' : 'var(--muted)';
+    return `<tr><td><span class="tag"><span class="dot" style="background:${x.color}"></span>${esc(x.name)}</span></td><td class="num">${money(x.plan)}</td><td class="num">${money(x.actual)}</td><td class="num" style="color:${col};font-weight:700">${diff > 0 ? '+' : ''}${money(diff)}</td></tr>`;
+  }).join('');
+
+  const tableStyle = `style="width:100%;border-collapse:collapse;font-size:13px"`;
+  const thStyle = `style="text-align:start;padding:9px 10px;background:var(--surface-2);font-weight:700;border-bottom:2px solid var(--border);white-space:nowrap"`;
+  const tdWrap = `<style>#reportTables td{padding:8px 10px;border-bottom:1px solid var(--border)}#reportTables tr:last-child td{border-bottom:none}</style>`;
+
+  return `<div class="view-head"><div><h1>التقرير النهائي</h1><p>${esc(t.name || 'رحلة بدون اسم')}</p></div><div class="row"><button class="btn btn-ghost btn-sm" onclick="exportExcel()">${ICON.download}<span>Excel</span></button><button class="btn btn-primary btn-sm" onclick="window.print()">${ICON.print}<span>PDF / طباعة</span></button></div></div>
+
+    <div id="reportTables">${tdWrap}
+
+    <div class="card card-pad" style="margin-bottom:14px">
+      <div class="section-title">ملخص الميزانية</div>
+      <div class="stat-grid">
+        <div class="stat accent-p"><div class="lbl">الميزانية</div><div class="val num">${money(c.budget)}<span class="unit">ر.س</span></div></div>
+        <div class="stat accent-w"><div class="lbl">الخطة</div><div class="val num">${money(c.planTotal)}<span class="unit">ر.س</span></div></div>
+        <div class="stat accent-g"><div class="lbl">الفعلي</div><div class="val num">${money(c.actualTotal)}<span class="unit">ر.س</span></div></div>
+        <div class="stat ${c.remaining >= 0 ? 'accent-g' : 'accent-d'}"><div class="lbl">${c.remaining >= 0 ? 'المتبقي' : 'العجز'}</div><div class="val num" style="color:${c.remaining >= 0 ? 'var(--success)' : 'var(--danger)'}">${money(Math.abs(c.remaining))}<span class="unit">ر.س</span></div></div>
+      </div>
+      <div class="row mt-4" style="gap:20px">
+        <span class="text-sm">نسبة الصرف: <b class="num">${c.pct.toFixed(1)}%</b></span>
+        ${c.topCat ? `<span class="text-sm">أكثر تصنيف: <b>${esc(c.topCat.name)}</b> (${money(c.topCat.actual)} ر.س)</span>` : ''}
+      </div>
+    </div>
+
+    <div class="card card-pad" style="margin-bottom:14px">
+      <div class="section-title">مقارنة المتوقع بالفعلي</div>
+      ${c.cats.length ? `<table ${tableStyle}><thead><tr><th ${thStyle}>التصنيف</th><th ${thStyle}>المتوقع</th><th ${thStyle}>الفعلي</th><th ${thStyle}>الفرق</th></tr></thead><tbody>${catRows}</tbody></table>` : `<p class="text-muted text-sm">لا توجد بيانات.</p>`}
+    </div>
+
+    <div class="card card-pad">
+      <div class="section-title">جدول المصروفات الفعلية <span class="sub">${exps.length} مصروف</span></div>
+      ${exps.length ? `<div style="overflow-x:auto"><table ${tableStyle}><thead><tr><th ${thStyle}>#</th><th ${thStyle}>التاريخ</th><th ${thStyle}>المصروف</th><th ${thStyle}>التصنيف</th><th ${thStyle}>الدفع</th><th ${thStyle}>من دفع</th><th ${thStyle}>المبلغ</th></tr></thead><tbody>${rows}</tbody><tfoot><tr><td colspan="6" style="text-align:end;padding:10px;font-weight:800">الإجمالي</td><td class="num" style="padding:10px;font-weight:800;color:var(--primary)">${money(c.actualTotal)} ر.س</td></tr></tfoot></table></div>` : `<p class="text-muted text-sm">لا مصروفات مسجّلة.</p>`}
+    </div>
+
+    </div>`;
+}
+
+// الرسوم البيانية
+function donutRing(pct, color, centerHTML) {
+  const r = 72, cx = 85, cy = 85, circ = 2 * Math.PI * r;
+  const off = circ * (1 - pct / 100);
+  return `<svg width="170" height="170" viewBox="0 0 170 170">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="var(--surface-2)" stroke-width="16"/>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${color}" stroke-width="16" stroke-linecap="round"
+      stroke-dasharray="${circ}" stroke-dashoffset="${off}" style="transition:stroke-dashoffset .6s ease"/>
+  </svg><div class="ring-center">${centerHTML}</div>`;
+}
+
+function planVsActualBars(cats) {
+  const max = Math.max(...cats.map(c => Math.max(c.plan, c.actual)), 1);
+  return `<div class="cbars">` + cats.map(c => {
+    const pw = (c.plan / max) * 100, aw = (c.actual / max) * 100;
+    const over = c.actual > c.plan && c.plan > 0;
+    return `<div class="cbar"><div class="cbar-top"><span class="tag"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</span><span class="amts">${money(c.actual)} / ${money(c.plan)} ر.س</span></div><div class="track"><div class="plan" style="width:${pw}%"></div><div class="actual" style="width:${aw}%;background:${over ? 'var(--danger)' : c.color}"></div></div></div>`;
+  }).join('') + `</div>`;
+}
+
+function donutChart(cats, total) {
+  if (!cats.length || total <= 0) return `<p class="text-muted text-sm">لا مصروفات فعلية بعد.</p>`;
+  const r = 60, cx = 80, cy = 80, circ = 2 * Math.PI * r;
+  let acc = 0;
+  const segs = cats.map(c => {
+    const frac = c.actual / total;
+    const dash = frac * circ;
+    const seg = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${c.color}" stroke-width="22"
+      stroke-dasharray="${dash} ${circ - dash}" stroke-dashoffset="${-acc}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    acc += dash;
+    return seg;
+  }).join('');
+  const legend = cats.slice().sort((a, b) => b.actual - a.actual).map(c =>
+    `<div class="dl"><span class="dot" style="background:${c.color}"></span><span class="nm">${esc(c.name)}</span><b class="num">${((c.actual / total) * 100).toFixed(0)}%</b></div>`
+  ).join('');
+  return `<div class="donut-wrap"><svg width="160" height="160" viewBox="0 0 160 160" style="flex-shrink:0">${segs}<text x="80" y="76" text-anchor="middle" font-family="Cairo" font-weight="800" font-size="15" fill="var(--ink)">${money(total)}</text><text x="80" y="94" text-anchor="middle" font-size="10" fill="var(--muted)">ر.س</text></svg><div class="donut-legend">${legend}</div></div>`;
+}
+
+// النوافذ المنبثقة
+function openModal(title, bodyHTML, footHTML, showFoot = true) {
+  const root = $('#modalRoot');
+  root.innerHTML = `<div class="modal-back open" id="mb">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head"><h3>${title}</h3><button class="icon-btn" onclick="closeModal()">${ICON.x}</button></div>
+      <div class="modal-body">${bodyHTML}</div>
+      ${showFoot ? `<div class="modal-foot">${footHTML}</div>` : ''}
+    </div>
+  </div>`;
+  $('#mb').onclick = closeModal;
+}
+function closeModal() { $('#modalRoot').innerHTML = ''; }
+
+function amountField(id, label, val) {
+  return `<div class="field" id="f_${id}"><label>${label} <span class="req">*</span></label><div class="amount-wrap"><span class="cur">ر.س</span><input class="control" id="${id}" inputmode="decimal" placeholder="0" value="${val != null ? esc(val) : ''}" oninput="clearErr('${id}')"></div><div class="field-error">أدخل مبلغاً صحيحاً أكبر من صفر.</div></div>`;
+}
+
+function catChips(selectedId) {
+  return `<div class="field" id="f_catChips"><label>التصنيف <span class="req">*</span></label><div class="chips" id="catChips">${store.categories.map(c => `<button type="button" class="chip ${selectedId === c.id ? 'sel' : ''}" data-cat="${c.id}" onclick="pickChip(this)"><span class="dot" style="background:${c.color}"></span>${esc(c.name)}</button>`).join('')}</div><input type="hidden" id="catInput" value="${selectedId || ''}"><div class="field-error">اختيار التصنيف مطلوب.</div></div>`;
+}
+function pickChip(btn) {
+  document.querySelectorAll('#catChips .chip').forEach(c => c.classList.remove('sel'));
+  btn.classList.add('sel');
+  $('#catInput').value = btn.dataset.cat;
+  $('#f_catChips').classList.remove('has-error');
+}
+function clearErr(id) { const f = $('#f_' + id); if (f) f.classList.remove('has-error'); const c = $('#' + id); if (c) c.classList.remove('invalid'); }
+function showErr(fieldId, ctrlId) { const f = $('#f_' + fieldId); if (f) f.classList.add('has-error'); if (ctrlId) { const c = $('#' + ctrlId); if (c) c.classList.add('invalid'); } }
+
+// النماذج
+function openTripForm(id) {
+  const t = id ? store.trips.find(x => x.id === id) : null;
+  const body = `
+    <div class="field"><label>اسم الرحلة</label><input class="control" id="tName" placeholder="مثال: رحلة الطائف الصيفية" value="${t ? esc(t.name || '') : ''}"><div class="hint">اختياري</div></div>
+    <div class="two-col">
+      <div class="field"><label>تاريخ الرحلة</label><input type="date" class="control" id="tDate" value="${t ? esc(t.date || '') : ''}"><div class="hint">اختياري</div></div>
+      <div class="field"><label>عدد الأشخاص</label><input class="control" id="tPeople" inputmode="numeric" placeholder="مثال: 4" value="${t ? esc(t.people || '') : ''}"><div class="hint">اختياري</div></div>
+    </div>
+    ${amountField('tBudget', 'الميزانية المعتمدة', t ? t.budget : '')}
+    <div class="field"><label>ملاحظات عامة</label><textarea class="control" id="tNotes" placeholder="أي ملاحظات عن الرحلة…">${t ? esc(t.notes || '') : ''}</textarea><div class="hint">اختياري</div></div>
+  `;
+  const foot = `<button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    <button class="btn btn-primary" onclick="saveTrip('${id || ''}')">${ICON.save}<span>${id ? 'حفظ التعديلات' : 'إنشاء الرحلة'}</span></button>`;
+  openModal(id ? 'تعديل الرحلة' : 'رحلة جديدة', body, foot);
+}
+function saveTrip(id) {
+  const budget = $('#tBudget').value;
+  if (!isValidAmount(budget)) { showErr('tBudget', 'tBudget'); toast('الميزانية مطلوبة ويجب أن تكون أكبر من صفر', 'err'); return; }
+  const data = {
+    name: $('#tName').value.trim(),
+    date: $('#tDate').value,
+    people: $('#tPeople').value.trim(),
+    budget: parseAmount(budget),
+    notes: $('#tNotes').value.trim(),
+  };
+  if (id) {
+    const t = store.trips.find(x => x.id === id);
+    Object.assign(t, data);
+    toast('تم حفظ التعديلات', 'ok');
+  } else {
+    const trip = Object.assign({ id: uid(), plan: [], expenses: [], createdAt: new Date().toISOString() }, data);
+    store.trips.unshift(trip);
+    store.activeTripId = trip.id;
+    toast('تم إنشاء الرحلة', 'ok');
+  }
+  save(); closeModal();
+  if (!id) go('dashboard'); else render();
+}
+function selectTrip(id) { store.activeTripId = id; save(); go('dashboard'); }
+function duplicateTrip(id) {
+  const t = store.trips.find(x => x.id === id); if (!t) return;
+  const copy = JSON.parse(JSON.stringify(t));
+  copy.id = uid(); copy.name = (t.name || 'رحلة') + ' (نسخة)';
+  copy.plan.forEach(p => p.id = uid());
+  copy.expenses.forEach(e => e.id = uid());
+  copy.createdAt = new Date().toISOString();
+  store.trips.unshift(copy); save(); render(); toast('تم نسخ الرحلة', 'ok');
+}
+function deleteTrip(id) {
+  const t = store.trips.find(x => x.id === id); if (!t) return;
+  confirmModal('حذف الرحلة', `سيتم حذف رحلة "${esc(t.name || 'بدون اسم')}" وكل مصروفاتها نهائياً.`, () => {
+    store.trips = store.trips.filter(x => x.id !== id);
+    if (store.activeTripId === id) store.activeTripId = store.trips[0] ? store.trips[0].id : null;
+    save(); render(); toast('تم حذف الرحلة', 'ok');
+  });
+}
+
+function openPlanForm(id) {
+  const t = activeTrip();
+  const p = id ? t.plan.find(x => x.id === id) : null;
+  const body = `
+    <div class="field"><label>اسم البند</label><input class="control" id="pName" placeholder="مثال: فندق 3 ليالٍ" value="${p ? esc(p.name || '') : ''}"><div class="hint">اختياري — سيُعرض "بند بدون اسم" إن تُرك فارغاً</div></div>
+    ${catChips(p ? p.categoryId : '')}
+    ${amountField('pAmount', 'المبلغ المتوقع', p ? p.amount : '')}
+    <div class="field"><label>ملاحظات</label><textarea class="control" id="pNotes" placeholder="اختياري">${p ? esc(p.notes || '') : ''}</textarea></div>
+  `;
+  const foot = `<button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    <button class="btn btn-primary" onclick="savePlan('${id || ''}')">${ICON.save}<span>حفظ</span></button>`;
+  openModal(id ? 'تعديل بند' : 'إضافة بند للخطة', body, foot);
+}
+function savePlan(id) {
+  const t = activeTrip();
+  const cat = $('#catInput').value;
+  const amount = $('#pAmount').value;
+  let ok = true;
+  if (!cat) { $('#f_catChips').classList.add('has-error'); ok = false; }
+  if (!isValidAmount(amount)) { showErr('pAmount', 'pAmount'); ok = false; }
+  if (!ok) { toast('المبلغ والتصنيف مطلوبان', 'err'); return; }
+
+  const data = { name: $('#pName').value.trim(), categoryId: cat, amount: parseAmount(amount), notes: $('#pNotes').value.trim() };
+  if (id) { Object.assign(t.plan.find(x => x.id === id), data); }
+  else { t.plan.push(Object.assign({ id: uid() }, data)); }
+  save(); closeModal(); render(); toast('تم حفظ البند', 'ok');
+}
+function deletePlan(id) {
+  confirmModal('حذف البند', 'سيُحذف هذا البند من الخطة.', () => {
+    const t = activeTrip(); t.plan = t.plan.filter(x => x.id !== id); save(); render(); toast('تم الحذف', 'ok');
+  });
+}
+
+function openExpenseForm(id) {
+  const t = activeTrip();
+  const e = id ? t.expenses.find(x => x.id === id) : null;
+  const today = new Date().toISOString().slice(0, 10);
+  const methods = ['كاش', 'بطاقة', 'تحويل', 'أخرى'];
+  const body = `
+    ${amountField('eAmount', 'المبلغ', e ? e.amount : '')}
+    ${catChips(e ? e.categoryId : '')}
+    <div class="field"><label>اسم المصروف</label><input class="control" id="eName" placeholder="مثال: عشاء المطعم" value="${e ? esc(e.name || '') : ''}"><div class="hint">اختياري</div></div>
+    <div class="two-col">
+      <div class="field"><label>التاريخ</label><input type="date" class="control" id="eDate" value="${e ? esc(e.date || '') : today}"><div class="hint">اختياري</div></div>
+      <div class="field"><label>طريقة الدفع</label><select class="control" id="eMethod"><option value="">— اختياري —</option>${methods.map(m => `<option ${e && e.method === m ? 'selected' : ''}>${m}</option>`).join('')}</select></div>
+    </div>
+    <div class="field"><label>الشخص الذي دفع</label><input class="control" id="ePayer" placeholder="مثال: أحمد" value="${e ? esc(e.payer || '') : ''}"><div class="hint">اختياري</div></div>
+    <div class="field"><label>ملاحظات</label><textarea class="control" id="eNotes" placeholder="اختياري">${e ? esc(e.notes || '') : ''}</textarea></div>
+    <div class="field">
+      <label>صورة الفاتورة</label>
+      <input type="file" accept="image/*" id="eReceiptFile" class="hidden" onchange="handleReceipt(this)">
+      <div id="receiptBox">
+        ${e && e.receipt ? `<div class="row"><img src="${e.receipt}" class="receipt-thumb" style="width:64px;height:64px"><button type="button" class="btn btn-ghost btn-sm" onclick="removeReceipt()">${ICON.trash}<span>إزالة</span></button></div>` : `<button type="button" class="btn btn-ghost btn-sm" onclick="document.getElementById('eReceiptFile').click()">${ICON.camera}<span>إرفاق صورة</span></button>`}
+      </div>
+      <input type="hidden" id="eReceipt" value="${e && e.receipt ? e.receipt : ''}">
+      <div class="hint">اختياري — تُصغَّر الصورة تلقائياً لتوفير المساحة</div>
+    </div>
+  `;
+  const foot = `<button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    <button class="btn btn-primary" onclick="saveExpense('${id || ''}')">${ICON.save}<span>حفظ المصروف</span></button>`;
+  openModal(id ? 'تعديل المصروف' : 'مصروف فعلي جديد', body, foot);
+}
+function saveExpense(id) {
+  const t = activeTrip();
+  const cat = $('#catInput').value;
+  const amount = $('#eAmount').value;
+  let ok = true;
+  if (!cat) { $('#f_catChips').classList.add('has-error'); ok = false; }
+  if (!isValidAmount(amount)) { showErr('eAmount', 'eAmount'); ok = false; }
+  if (!ok) { toast('المبلغ والتصنيف مطلوبان', 'err'); return; }
+
+  const data = {
+    name: $('#eName').value.trim(),
+    categoryId: cat,
+    amount: parseAmount(amount),
+    date: $('#eDate').value,
+    method: $('#eMethod').value,
+    payer: $('#ePayer').value.trim(),
+    notes: $('#eNotes').value.trim(),
+    receipt: $('#eReceipt').value || null,
+  };
+  if (id) { Object.assign(t.expenses.find(x => x.id === id), data); }
+  else { t.expenses.push(Object.assign({ id: uid(), createdAt: new Date().toISOString() }, data)); }
+  
+  save(); closeModal(); render(); toast('تم حفظ المصروف', 'ok');
+  
+  // إشعارات ذكية
+  const newCalc = calc(t);
+  if (newCalc.pct >= 100 && !id) {
+    toast('🔴 تجاوزت الميزانية! المبلغ الزائد: ' + sar(newCalc.overspend), 'err');
+  } else if (newCalc.pct >= 80 && newCalc.pct < 100 && !id) {
+    toast('🟠 تحذير: صرفت ' + newCalc.pct.toFixed(0) + '% من الميزانية', 'err');
+  } else if (newCalc.pct >= 50 && newCalc.pct < 80 && !id) {
+    toast('📊 وصلت إلى ' + newCalc.pct.toFixed(0) + '% من الميزانية', '');
+  }
+}
+function deleteExpense(id) {
+  confirmModal('حذف المصروف', 'سيُحذف هذا المصروف نهائياً.', () => {
+    const t = activeTrip(); t.expenses = t.expenses.filter(x => x.id !== id); save(); render(); toast('تم الحذف', 'ok');
+  });
+}
+function handleReceipt(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    const img = new Image();
+    img.onload = () => {
+      const max = 900;
+      let { width, height } = img;
+      if (width > max || height > max) { const r = Math.min(max / width, max / height); width *= r; height *= r; }
+      const canvas = document.createElement('canvas');
+      canvas.width = width; canvas.height = height;
+      canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+      const dataUrl = canvas.toDataURL('image/jpeg', 0.72);
+      $('#eReceipt').value = dataUrl;
+      $('#receiptBox').innerHTML = `<div class="row"><img src="${dataUrl}" class="receipt-thumb" style="width:64px;height:64px"><button type="button" class="btn btn-ghost btn-sm" onclick="removeReceipt()">${ICON.trash}<span>إزالة</span></button></div>`;
+    };
+    img.src = ev.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function removeReceipt() {
+  $('#eReceipt').value = '';
+  $('#receiptBox').innerHTML = `<button type="button" class="btn btn-ghost btn-sm" onclick="document.getElementById('eReceiptFile').click()">${ICON.camera}<span>إرفاق صورة</span></button>`;
+}
+function viewImage(expId) {
+  const t = activeTrip(); const e = t.expenses.find(x => x.id === expId); if (!e || !e.receipt) return;
+  $('#imgViewImg').src = e.receipt; $('#imgView').classList.add('open');
+}
+
+const CAT_COLORS = ['#0E7C86', '#3B7DD8', '#E6875A', '#8B6BD9', '#C7568C', '#1E9D64', '#B0893A', '#D8464C', '#6B7A80', '#0A9396', '#EE9B00', '#9B2226'];
+function openCatForm(id) {
+  const c = id ? catById(id) : null;
+  const cur = c ? c.color : CAT_COLORS[0];
+  const body = `
+    <div class="field"><label>اسم التصنيف <span class="req">*</span></label><input class="control" id="cName" placeholder="مثال: هدايا" value="${c ? esc(c.name) : ''}"><div class="field-error">اسم التصنيف مطلوب.</div></div>
+    <div class="field"><label>اللون</label>
+      <div class="chips" id="colorChips">
+        ${CAT_COLORS.map(col => `<button type="button" class="chip ${cur === col ? 'sel' : ''}" data-col="${col}" onclick="pickColor(this)" style="padding:8px"><span class="dot" style="width:18px;height:18px;background:${col}"></span></button>`).join('')}
+      </div>
+      <input type="hidden" id="cColor" value="${cur}">
+    </div>
+  `;
+  const foot = `<button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    <button class="btn btn-primary" onclick="saveCat('${id || ''}')">${ICON.save}<span>حفظ</span></button>`;
+  openModal(id ? 'تعديل التصنيف' : 'تصنيف جديد', body, foot);
+}
+function pickColor(btn) {
+  document.querySelectorAll('#colorChips .chip').forEach(c => c.classList.remove('sel'));
+  btn.classList.add('sel'); $('#cColor').value = btn.dataset.col;
+}
+function saveCat(id) {
+  const name = $('#cName').value.trim();
+  if (!name) { $('#cName').closest('.field').classList.add('has-error'); toast('اسم التصنيف مطلوب', 'err'); return; }
+  const color = $('#cColor').value;
+  if (id) { const c = catById(id); c.name = name; c.color = color; }
+  else { store.categories.push({ id: 'c_' + uid(), name, color }); }
+  save(); closeModal(); render(); toast('تم حفظ التصنيف', 'ok');
+}
+function deleteCat(id) {
+  let used = 0;
+  store.trips.forEach(t => { (t.plan || []).forEach(p => { if (p.categoryId === id) used++; }); (t.expenses || []).forEach(e => { if (e.categoryId === id) used++; }); });
+  if (used > 0) { toast('لا يمكن حذف تصنيف مستخدم في ' + used + ' بند/مصروف', 'err'); return; }
+  if (store.categories.length <= 1) { toast('يجب إبقاء تصنيف واحد على الأقل', 'err'); return; }
+  confirmModal('حذف التصنيف', 'سيُحذف هذا التصنيف.', () => {
+    store.categories = store.categories.filter(c => c.id !== id); save(); render(); toast('تم الحذف', 'ok');
+  });
+}
+
+let _confirmCb = null;
+function confirmModal(title, msg, cb) {
+  _confirmCb = cb;
+  const body = `<p style="font-size:14.5px;color:var(--muted)">${msg}</p>`;
+  const foot = `<button class="btn btn-ghost" onclick="closeModal()">إلغاء</button>
+    <button class="btn btn-danger" onclick="runConfirm()">${ICON.trash}<span>تأكيد الحذف</span></button>`;
+  openModal(title, body, foot);
+}
+function runConfirm() { const cb = _confirmCb; closeModal(); if (cb) cb(); }
+
+// التصدير
+function downloadFile(content, filename, type) {
+  const blob = new Blob([content], { type });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function exportExcel() {
+  const t = activeTrip(); const c = calc(t);
+  let csv = '';
+  csv += 'تقرير رحلة,' + csvCell(t.name || 'بدون اسم') + '\n';
+  csv += 'الميزانية,' + c.budget + '\n';
+  csv += 'إجمالي الخطة,' + c.planTotal + '\n';
+  csv += 'إجمالي الفعلي,' + c.actualTotal + '\n';
+  csv += (c.remaining >= 0 ? 'المتبقي,' : 'العجز,') + Math.abs(c.remaining) + '\n';
+  csv += 'نسبة الصرف %,' + c.pct.toFixed(1) + '\n\n';
+
+  csv += 'مقارنة التصنيفات\n';
+  csv += 'التصنيف,المتوقع,الفعلي,الفرق\n';
+  c.cats.forEach(x => { csv += `${csvCell(x.name)},${x.plan},${x.actual},${x.actual - x.plan}\n`; });
+  csv += '\n';
+
+  csv += 'المصروفات الفعلية\n';
+  csv += 'التاريخ,المصروف,التصنيف,طريقة الدفع,من دفع,الملاحظات,المبلغ\n';
+  (t.expenses || []).slice().sort((a, b) => (a.date || '').localeCompare(b.date || '')).forEach(e => {
+    csv += [csvCell(e.date || ''), csvCell(e.name || 'مصروف بدون اسم'), csvCell(catName(e.categoryId)), csvCell(e.method || ''), csvCell(e.payer || ''), csvCell(e.notes || ''), e.amount].join(',') + '\n';
+  });
+
+  downloadFile('\uFEFF' + csv, `تقرير-${(t.name || 'رحلة').replace(/\s+/g, '-')}.csv`, 'text/csv;charset=utf-8');
+  toast('تم تصدير ملف Excel', 'ok');
+}
+function csvCell(v) { const s = String(v == null ? '' : v); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; }
+
+function exportBackup() {
+  downloadFile(JSON.stringify(store, null, 2), `rahalati-backup-${new Date().toISOString().slice(0, 10)}.json`, 'application/json');
+  toast('تم تصدير النسخة الاحتياطية', 'ok');
+}
+function importBackup(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!data.trips || !Array.isArray(data.trips)) throw new Error('ملف غير صالح');
+      confirmModal('استيراج نسخة', 'سيتم استبدال كل بياناتك الحالية بالنسخة المستوردة. تأكد أنك أخذت نسخة احتياطية.', () => {
+        store = data;
+        if (!store.categories || !store.categories.length) store.categories = JSON.parse(JSON.stringify(DEFAULT_CATEGORIES));
+        save(); render(); toast('تم الاستيراج بنجاح', 'ok');
+      });
+    } catch (e) { toast('تعذّر قراءة الملف — تأكد أنه نسخة صحيحة', 'err'); }
+    input.value = '';
+  };
+  reader.readAsText(file);
+}
+function wipeAll() {
+  confirmModal('حذف كل البيانات', 'سيتم حذف جميع الرحلات والمصروفات والتصنيفات نهائياً من هذا الجهاز.', () => {
+    store = defaultStore(); save(); go('trips'); toast('تم حذف كل البيانات', 'ok');
+  });
+}
+
+// الإقلاع
+function init() {
+  if (store.trips.length && !activeTrip()) store.activeTripId = store.trips[0].id;
+  currentView = activeTrip() ? 'dashboard' : 'trips';
+  render();
+}
+init();
+</script>
+</body>
+</html>
